@@ -1,0 +1,135 @@
+{% comment %} {% include 'navbar1.html' %} {% endcomment %}
+{% load static %}
+{% block body1 %}
+
+{% if error == "no" %}
+     <script>
+	   alert('New Customer has been Added...');
+	   window.location=('{% url 'index' %}');
+     </script>
+{% endif %}
+
+{% if error == "yes" %}
+     <script>
+	    alert('Something went wrong, Try Again');
+     </script>
+{% endif %}
+
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	crossorigin="anonymous" />
+
+
+
+<style>
+
+  body{
+    background-color: #080710;
+  }
+
+</style>
+
+<div class="card shadow" style="margin-left:195px; margin-right:195px; margin-top:25px; margin-bottom:25px;">
+    <div class="card-body">
+      <h5 class="p-2" style="border-bottom: 2px solid orange">Add Your Details</h5>
+
+      <div class="container-fluid">
+        <form method="post">
+            {% csrf_token %}
+          <div class="form-row">
+
+            <div class="col-sm-6">
+             <div class="form-group">
+               <label>First Name</label>
+               <input type="text" name="firstname" class="form-control" placeholder="Enter First Name" required>
+             </div>
+            </div>
+             <div class="col-sm-6">
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" name="lastname" class="form-control" placeholder="Enter Last Name" required>
+              </div>
+            </div>
+
+           <div class="col-sm-12">
+             <div class="form-group">
+               <label>Enter Your Email ID</label>
+               <input type="email" name="usercontactnumber" class="form-control" placeholder="Enter your Email ID" required>
+             </div>
+            </div>
+
+            <div class="col-sm-12">
+             <div class="form-group">
+               <label>Password</label>
+               <input type="password" name="address" class="form-control" placeholder="Enter your password" required>
+             </div>
+            </div>
+
+            <div class="col-sm-12">
+             <div class="form-group">
+               <label>Address</label>
+               <textarea name="email" class="form-control" rows="2"></textarea>
+
+             </div>
+            </div>
+
+            <div class="col-sm-12">
+             <div class="form-group">
+               <label>No OF Rooms</label>
+               <input type="text" name="city" class="form-control" placeholder="Enter No Of Rooms" required>
+             </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label>Connection Type</label>
+                <select name ="state" class="form-control">
+                 <option selected>detached</option>
+                 <option>semi-detached</option>
+                 <option>terraced</option>
+                 <option>flat</option>
+                 <option>cottage</option>
+                 <option>bungalow</option>
+                 <option>mansion</option>
+                </select>
+              </div>
+             </div>
+
+            {% comment %} <div class="col-sm-12">
+             <div class="form-group">
+               <label>State</label>
+               <input type="text" name="state" class="form-control" placeholder="Enter State" required>
+             </div>
+            </div> {% endcomment %}
+          </div>
+          <hr>
+        <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+      </div>
+    </div>
+  </div>
+  {% comment %} <script type="text/javascript">
+		function MobileValidate() {
+			var contact = document.getElementById("usercontactnumber").value;
+			var contactTenDigit = /^\d{10}$/;
+			if (contact != '') {
+				if (contact.match(contactTenDigit)) {
+					return true;
+				} else {
+					alert("Enter Ten Digit Mobile Number");
+					return false;
+				}
+			}
+		} {% endcomment %}
+</script>
+{% endblock %}
